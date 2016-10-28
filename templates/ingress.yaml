@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: drone-ingress
+   annotations:
+    # enable kube-lego for this ingress
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - drone.finalapproachsoftware.com
+    secretName: drone-tls
+  rules:
+  - host: drone.finalapproachsoftware.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: drone-service
+          servicePort: 80
