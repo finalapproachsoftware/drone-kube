@@ -7,7 +7,8 @@ spec:
   template:
     metadata:
       labels:
-        name: drone-server
+        app: drone
+        component: server
     spec:
       containers:
         - image: drone/drone:0.5
@@ -72,8 +73,8 @@ spec:
                   key: server.remote.github.client.id
             - name: DRONE_GITHUB_SECRET
               valueFrom:
-                configMapKeyRef:
-                  name: drone-config
+                 secretKeyRef:
+                  name: drone-secrets
                   key: server.remote.github.secret
           ports:
             - containerPort: 80

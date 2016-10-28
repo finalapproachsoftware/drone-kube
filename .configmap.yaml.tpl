@@ -44,7 +44,6 @@ data:
   # CHANGEME: Substitute your Github OAuth application client ID and secret.
   server.remote.github.is.enabled: "true"
   server.remote.github.client.id: xxxxxxxxxxxxxxxxxxxx
-  server.remote.github.secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   ######################
   # Drone Agent Config #

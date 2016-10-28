@@ -2,7 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: drone-ingress
-   annotations:
+  namespace: drone
+  annotations:
     # enable kube-lego for this ingress
     kubernetes.io/tls-acme: "true"
 spec:

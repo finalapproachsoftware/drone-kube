@@ -9,5 +9,6 @@ spec:
       protocol: TCP
       targetPort: 80
   selector:
-    name: drone-server
-  type: LoadBalancer
+    app: drone
+    component: server
+  type: NodePort
