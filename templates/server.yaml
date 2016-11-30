@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: drone-server
+  namespace: drone
 spec:
   replicas: 1
   template:
@@ -14,6 +15,12 @@ spec:
         - image: drone/drone:0.5
           imagePullPolicy: Always
           name: drone-server
+          readinessProbe:
+            httpGet:
+              path: /login/form
+              port: 8000
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
           env:
             - name: DRONE_SERVER_ADDR
               value: ":8000"
@@ -77,7 +84,7 @@ spec:
                   name: drone-secrets
                   key: server.remote.github.secret
           ports:
-            - containerPort: 80
+            - containerPort: 8000
               protocol: TCP
           volumeMounts:
             # Persist our configs in an SQLite DB in here

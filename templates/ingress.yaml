@@ -6,6 +6,7 @@ metadata:
   annotations:
     # enable kube-lego for this ingress
     kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: "gce"
 spec:
   tls:
   - hosts:
@@ -15,7 +16,7 @@ spec:
   - host: drone.finalapproachsoftware.com
     http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: drone-service
           servicePort: 80
